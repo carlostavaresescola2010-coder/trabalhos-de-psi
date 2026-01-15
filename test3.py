@@ -1,42 +1,24 @@
-def gerar_sigla(frase):
-    """
-    Gera uma sigla a partir de uma frase.
-    Extrai a primeira letra de cada palavra e converte para maiúsculas.
-    """
+print("=== GERADOR DE SIGLAS ===\n")
+
+while True:
+    frase = input("Digite uma frase: ")
+
+    if not frase.strip():
+        print("Erro: Digite algo!\n")
+        continue
+
     palavras = frase.split()
-    sigla = ''.join(palavra[0].upper() for palavra in palavras if palavra)
-    return sigla
 
+    sigla = ""
+    for palavra in palavras:
+        sigla += palavra[0].upper()
 
-def main():
-    print("=" * 50)
-    print("GERADOR DE SIGLAS")
-    print("=" * 50)
-    print()
+    print(f"\nFrase: {frase}")
+    print(f"Sigla: {sigla}")
+    print(f"Número de palavras: {len(palavras)}\n")
 
-    while True:
-        # Pedir ao utilizador uma frase
-        frase = input("Digite uma frase (ou 'sair' para terminar): ").strip()
+    continuar = input("Gerar outra? (s/n): ")
 
-        # Verificar se o utilizador quer sair
-        if frase.lower() == 'sair':
-            print("\nObrigado por usar o Gerador de Siglas!")
-            break
-
-        # Verificar se a frase não está vazia
-        if not frase:
-            print("⚠️  Por favor, digite uma frase válida.\n")
-            continue
-
-        # Gerar e mostrar a sigla
-        sigla = gerar_sigla(frase)
-
-        print("\n" + "-" * 50)
-        print(f"Frase original: {frase}")
-        print(f"Sigla gerada: {sigla}")
-        print("-" * 50)
-        print()
-
-
-if __name__ == "__main__":
-    main()
+    if continuar != 's':
+        print("\nPrograma encerrado!")
+        break
